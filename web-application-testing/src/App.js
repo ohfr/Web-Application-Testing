@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 
 import Dashboard from './Components/Dashboard';
@@ -20,9 +20,16 @@ const updateCounts = (type) => {
       break;
   }
 }
+
+useEffect(() => {
+ if(balls === 4 || strikes === 3) {
+   setBalls(0);
+   setStrikes(0);
+ }
+}, [balls, strikes])
   return (
     <div className="App">
-      <Dashboard updateCounts={updateCounts}/>
+      <Dashboard updateCounts={updateCounts} />
       <Display strikes={strikes} balls={balls} />
     </div>
   );
