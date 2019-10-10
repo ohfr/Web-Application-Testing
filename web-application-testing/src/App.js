@@ -18,6 +18,13 @@ const updateCounts = (type) => {
     case 'ball': 
       setBalls(balls + 1);
       break;
+    case 'hit': 
+      setStrikes(0);
+      setBalls(0);
+      break;
+    case 'foul':
+      strikes > 2 && setStrikes(strikes + 1);
+      break;
   }
 }
 
